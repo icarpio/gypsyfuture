@@ -1,0 +1,338 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f0e9db;
+  color: #333;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  overflow-x: hidden; /* <- evita scroll horizontal en móviles */
+}
+
+.container {
+  max-width: 1000px;
+  width: 100%;
+  background: #fff8f0;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1, h2 {
+  margin-bottom: 15px;
+  text-align: center;
+  color: #5b3a29;
+}
+
+label, select, button {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: 10px auto 20px auto;
+  font-size: 1.1rem;
+}
+
+button {
+  padding: 10px;
+  background: #8b5e3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background: #a3714c;
+}
+
+#result {
+  margin-top: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+/* Contenedor común cartas */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+/* Carta individual */
+.card {
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  width: 140px;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+  position: relative;
+  padding: 15px 10px;
+}
+
+.card-image {
+  width: 120px;
+  height: 190px;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  margin-bottom: 10px;
+  background: #ddd;
+}
+
+.card p {
+  font-size: 0.8rem;
+  color: #5b3a29;
+  max-width: 95%;
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* ----------- HERRADURA ----------- */
+.cards-container.horseshoe {
+  position: relative;
+  width: 960px;
+  height: 300px;
+  margin: 0 auto 20px auto;
+  overflow: visible;
+  transform-origin: top center;
+  transition: transform 0.3s ease;
+}
+
+.cards-container.horseshoe .card {
+  position: absolute;
+  width: 130px;
+  height: 220px;
+  bottom: 0;
+  transform-origin: bottom center;
+  transition: transform 0.3s ease;
+}
+
+.cards-container.horseshoe .card:nth-child(4) {
+  transform: translateX(0) translateY(0);
+}
+.cards-container.horseshoe .card:nth-child(3) {
+  transform: translateX(-130px) translateY(-40px);
+}
+.cards-container.horseshoe .card:nth-child(5) {
+  transform: translateX(130px) translateY(-40px);
+}
+.cards-container.horseshoe .card:nth-child(2) {
+  transform: translateX(-260px) translateY(-80px);
+}
+.cards-container.horseshoe .card:nth-child(6) {
+  transform: translateX(260px) translateY(-80px);
+}
+.cards-container.horseshoe .card:nth-child(1) {
+  transform: translateX(-390px) translateY(-120px);
+}
+.cards-container.horseshoe .card:nth-child(7) {
+  transform: translateX(390px) translateY(-120px);
+}
+
+/* ----------- CRUZ ----------- */
+.cards-container.cross {
+  display: grid;
+  grid-template-columns: repeat(4, 160px);
+  grid-template-rows: repeat(4, 280px);
+  gap: 20px;
+  justify-content: center;
+  width: max-content;
+  margin: 0 auto 20px auto;
+  padding: 10px;
+  position: relative;
+  transform-origin: top center;
+  transition: transform 0.3s ease;
+}
+
+.cards-container.cross .card {
+  width: 140px;
+  height: 260px;
+  position: relative;
+}
+
+.cards-container.cross .card:nth-child(4) {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.cards-container.cross .card:nth-child(5) {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.cards-container.cross .card:nth-child(1) {
+  grid-column: 2;
+  grid-row: 2;
+  z-index: 1;
+}
+
+.cards-container.cross .card:nth-child(2) {
+  grid-column: 2;
+  grid-row: 2;
+  transform: rotate(90deg);
+  position: relative;
+  top: -80px;
+  left: 0;
+  transform-origin: center center;
+  z-index: 2;
+}
+
+.cards-container.cross .card:nth-child(3) {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.cards-container.cross .card:nth-child(6) {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.cards-container.cross .card:nth-child(10) {
+  grid-column: 4;
+  grid-row: 1;
+}
+.cards-container.cross .card:nth-child(9) {
+  grid-column: 4;
+  grid-row: 2;
+}
+.cards-container.cross .card:nth-child(8) {
+  grid-column: 4;
+  grid-row: 3;
+}
+.cards-container.cross .card:nth-child(7) {
+  grid-column: 4;
+  grid-row: 4;
+}
+
+.card.reversed .card-image {
+  transform: rotate(180deg);
+}
+
+/* Spinner */
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border-left-color: #4a90e2;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+.spinner-icon {
+  display: block;
+  margin: 40px auto;
+  width: 80px;
+  height: 80px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+@media (max-width: 480px) {
+  /* Container principal: menos padding para aprovechar espacio */
+  body {
+    padding: 10px;
+  }
+  
+  .container {
+    padding: 10px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Ajustes para horseshoe */
+  .cards-container.horseshoe {
+    width: 100% !important;
+    height: auto !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    overflow-x: auto;
+    margin: 10px 0;
+  }
+  .cards-container.horseshoe .card {
+    position: relative !important;
+    width: 100px !important;
+    height: 150px !important;
+    margin: 8px !important;
+    transform: none !important;
+    bottom: auto !important;
+  }
+
+  /* Ajustes para cross */
+  .cards-container.cross {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    width: 100% !important;
+    grid-template-columns: none !important;
+    grid-template-rows: none !important;
+    gap: 8px !important;
+    padding: 0 !important;
+  }
+  .cards-container.cross .card {
+    width: 100px !important;
+    height: auto !important;
+    position: relative !important;
+    transform: none !important;
+    top: auto !important;
+    left: auto !important;
+  }
+
+  /* Etiquetas, selects, botones más pequeños */
+  label, select, button {
+    max-width: 86%;
+    font-size: 1rem;
+    margin: 8px auto 15px auto;
+  }
+
+  /* Texto más pequeño para ajustar */
+  .card p {
+    font-size: 0.7rem !important;
+  }
+}
+
+.select-wrapper {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.select-wrapper .choices__inner {
+  width: 320px; /* ancho visible del select */
+  margin: 0 auto; /* centrado */
+  box-sizing: border-box;
+}
+
+.select-wrapper .choices__list--dropdown {
+  width: 320px !important; /* igual que el select visible */
+  left: 50% !important;    /* posiciona a la mitad del contenedor */
+  transform: translateX(-50%) !important; /* centra horizontalmente */
+  margin: 0 auto;
+}
+

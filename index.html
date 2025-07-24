@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarot Online</title>
+    
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="../images/favicon.png" type="image/png" />
+    <!-- Choices.js CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <img
+        src="images/logo.png"
+        alt="Tirada de Tarot"
+        style="width: 300px; height: auto"
+      />
+      <div class="select-wrapper">
+        <label for="spread">Elige una tirada:</label>
+        <select id="spread">
+          <option value="1">Carta del día</option>
+          <option value="3">Pasado, presente, futuro</option>
+          <option value="7">Evaluación general</option>
+          <!--<option value="10">Análisis profundo</option>-->
+        </select>
+      </div>
+
+      <button id="draw">Tirar las cartas</button>
+
+      <div id="result">
+        <div id="cards" class="cards-container"></div>
+        <div id="interpretation"></div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+    <!-- Choices.js JS -->
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+  </body>
+</html>
