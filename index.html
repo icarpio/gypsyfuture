@@ -40,5 +40,37 @@
     <script src="app.js"></script>
     <!-- Choices.js JS -->
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    <script type='text/javascript' src='//pl27253363.profitableratecpm.com/67/ca/63/67ca637e282e917f64fe8d9792d92e0d.js'></script> <!--Ads-->
+    <script>
+    let popCount = 0;
+
+    // 1️⃣ Popunder al cargar la página (una sola vez)
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        if (popCount < 1) {
+          simulateClick(); // simula un clic
+          popCount++;
+        }
+      }, 500); // espera medio segundo
+    });
+
+    // 2️⃣ Popunder al hacer clic en el botón "Tirar las cartas"
+    document.getElementById("draw").addEventListener("click", () => {
+      if (popCount < 2) {
+        simulateClick(); // simula otro clic
+        popCount++;
+      }
+    });
+
+    // 🔧 Esta función crea un clic "falso" para activar el popunder
+    function simulateClick() {
+      try {
+        const evt = new MouseEvent("click", { bubbles: true, cancelable: true });
+        document.body.dispatchEvent(evt);
+      } catch (e) {
+        console.error("Error al simular clic para popunder:", e);
+      }
+    }
+  </script>
   </body>
 </html>
